@@ -7,7 +7,7 @@ jobs:
       - run: |
           echo 'about to wait'
           sleep 150
-          echo 'eating potatoes in the meantime'
+          echo 'eating moar potatoes in the meantime'
           sleep 50
           echo 'done waiting'
 # comment
