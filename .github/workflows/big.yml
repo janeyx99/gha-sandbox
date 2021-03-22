@@ -5,5 +5,5 @@ jobs:
     steps:
       - run: |
           echo 'about to wait'
-          sleep 120
+          sleep 150
           echo 'done waiting'
