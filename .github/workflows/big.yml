@@ -3,6 +3,7 @@ jobs:
   big:
     runs-on: ubuntu-20.04
     steps:
+      - uses: technote-space/auto-cancel-redundant-workflow@v1
       - run: |
           echo 'about to wait'
           sleep 150
