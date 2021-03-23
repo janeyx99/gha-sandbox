@@ -7,3 +7,14 @@ jobs:
     steps:
       - name: Hello world
         run: echo hello world
+      - name: Be slow
+        run: |
+          sleep 300
+          echo take nap
+          sleep 300
+          echo take more nap
+          sleep 300
+          echo still tired
+          sleep 300
+      - name: Goodbye world
+        run: echo bye world

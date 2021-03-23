@@ -1,0 +1,18 @@
+name: Cancel redundant workflows
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '*/5 * * * *'  # At every 5th minute
+
+jobs:
+  cancel-redundant-workflows:
+    runs-on: ubuntu-18.04
+      steps:
+        # for schedule event, GITHUB_REF is the default branch
+        # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Cancel Redundant Workflows
+          run: .github/scripts/cancel_redundant_workflows.py
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
