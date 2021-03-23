@@ -1,0 +1,16 @@
+name: Pin base branch
+on: pull_request_target
+
+jobs:
+  pin-base-branch:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Change base branch to mybranch
+        # https://stackoverflow.com/a/50184923
+        run: |
+          curl "https://api.github.com/repos/github/hubot/pulls/$NUMBER" \
+            -H "Authorization: token $TOKEN" \
+            -d '{ "base": "mybranch" }'
+        env:
+          NUMBER: ${{ github.event.number }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
