@@ -8,7 +8,7 @@ jobs:
       - name: Change base branch to mybranch
         # https://stackoverflow.com/a/50184923
         run: |
-          curl "https://api.github.com/repos/github/hubot/pulls/$NUMBER" \
+          curl "https://api.github.com/repos/samestep/gha-sandbox/pulls/$NUMBER" \
             -H "Authorization: token $TOKEN" \
             -d '{ "base": "mybranch" }'
         env:
