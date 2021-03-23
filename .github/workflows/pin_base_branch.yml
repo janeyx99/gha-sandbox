@@ -1,9 +1,5 @@
 name: Pin base branch
-on:
-  pull_request_target:
-    types:
-      - opened
-      - synchronize
+on: pull_request_target
 
 jobs:
   pin-base-branch:
@@ -12,9 +8,10 @@ jobs:
       - name: Change base branch to mybranch
         # https://stackoverflow.com/a/50184923
         run: |
-          curl "https://api.github.com/repos/samestep/gha-sandbox/pulls/$NUMBER" \
-            -H "Authorization: token $TOKEN" \
-            -d '{ "base": "mybranch" }'
+          # curl "https://api.github.com/repos/samestep/gha-sandbox/pulls/$NUMBER" \
+          #   -H "Authorization: token $TOKEN" \
+          #   -d '{ "base": "mybranch" }'
+          echo hello world
         env:
           NUMBER: ${{ github.event.number }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
