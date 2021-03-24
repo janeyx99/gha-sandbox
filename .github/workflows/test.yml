@@ -29,7 +29,7 @@ jobs:
           sleep 300
           echo take more nap
           sleep 300
-          echo still tired
+          echo still tired!
           sleep 300
       - name: Goodbye world
         run: echo bye world
