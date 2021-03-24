@@ -25,7 +25,7 @@ jobs:
       - name: Be slow
         run: |
           sleep 300
-          echo take nap
+          echo take nap!
           sleep 300
           echo take more nap
           sleep 300
