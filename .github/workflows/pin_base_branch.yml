@@ -16,7 +16,7 @@ jobs:
         run: |
           set -eux
           HEAD_SHA=${{ github.event.pull_request.head.sha }}
-          MERGE_BASE=$(git merge-base main "$HEAD_SHA")
+          MERGE_BASE=$(git merge-base origin/main "$HEAD_SHA")
           BRANCH="base/$NUMBER"
           git checkout -B "$BRANCH" "$MERGE_BASE"
           git push -f origin "$BRANCH"
