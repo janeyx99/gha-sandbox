@@ -5,13 +5,25 @@ jobs:
   pin-base-branch:
     runs-on: ubuntu-18.04
     steps:
-      - name: Change base branch to mybranch
-        # https://stackoverflow.com/a/50184923
+      # should be safe according to
+      # https://securitylab.github.com/research/github-actions-preventing-pwn-requests
+      # because we're only going to use it to compute the git merge-base
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Update base branch
         run: |
-          # curl "https://api.github.com/repos/samestep/gha-sandbox/pulls/$NUMBER" \
-          #   -H "Authorization: token $TOKEN" \
-          #   -d '{ "base": "mybranch" }'
-          echo hello world
+          set -eux
+          BASE_SHA=${{ github.event.pull_request.base.sha }}
+          HEAD_SHA=${{ github.event.pull_request.head.sha }}
+          MERGE_BASE=$(git merge-base "$BASE_SHA" "$HEAD_SHA")
+          BRANCH="base/$NUMBER"
+          git checkout -b "$BRANCH" "$MERGE_BASE"
+          git push origin "$BRANCH"
+          curl "https://api.github.com/repos/samestep/gha-sandbox/pulls/$NUMBER" \
+            -H "Authorization: token $TOKEN" \
+            -d "{ \"base\": \"$BRANCH\" }'
         env:
           NUMBER: ${{ github.event.number }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
