@@ -1,18 +1,15 @@
 name: Cancel redundant workflows
 on:
-  workflow_dispatch:
-  # schedule:
-  #   - cron: '*/5 * * * *'  # At every 5th minute
+  workflow_run:
+    workflows:
+      - Test  # TODO: delete this and see if it's optional
+    types:
+      - requested
 
 jobs:
   cancel-redundant-workflows:
     runs-on: ubuntu-18.04
     steps:
-      # for schedule event, GITHUB_REF is the default branch
-      # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Cancel Redundant Workflows
-        run: .github/scripts/cancel_redundant_workflows.py
+      - uses: technote-space/auto-cancel-redundant-workflow@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET_RUN_ID: ${{ github.event.workflow_run.id }}
