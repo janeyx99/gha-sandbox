@@ -1,8 +1,11 @@
 name: Test
 on:
   pull_request:
-    # branches:
-    #   - base/*
+    types:
+      - synchronize
+      - labeled
+    branches:
+      - base/*
   push:
     branches:
       - main

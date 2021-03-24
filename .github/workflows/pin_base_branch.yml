@@ -30,3 +30,8 @@ jobs:
         env:
           NUMBER: ${{ github.event.number }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Add label
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          number: ${{ github.event.number }}
+          labels: enhancement
