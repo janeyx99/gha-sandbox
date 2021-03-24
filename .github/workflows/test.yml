@@ -8,6 +8,11 @@ on:
       - main
 
 jobs:
+  new-job:
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo I am new
+
   test:
     runs-on: ubuntu-18.04
     steps:
