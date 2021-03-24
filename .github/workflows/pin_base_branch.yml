@@ -17,7 +17,7 @@ jobs:
           set -eux
           HEAD_SHA=${{ github.event.pull_request.head.sha }}
           MERGE_BASE=$(git merge-base origin/main "$HEAD_SHA")
-          BRANCH="base/$NUMBER"
+          BRANCH="base/$(git rev-parse --short=7 "$MERGE_BASE")"
           git checkout -B "$BRANCH" "$MERGE_BASE"
           git push -f origin "$BRANCH"
           curl "https://api.github.com/repos/samestep/gha-sandbox/pulls/$NUMBER" \
