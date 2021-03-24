@@ -1,18 +1,13 @@
 name: Test
 on:
   pull_request:
-    branches:
-      - base/*
+    # branches:
+    #   - base/*
   push:
     branches:
       - main
 
 jobs:
-  new-job:
-    runs-on: ubuntu-18.04
-    steps:
-      - run: echo I am new
-
   test:
     runs-on: ubuntu-18.04
     steps:
