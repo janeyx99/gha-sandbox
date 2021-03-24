@@ -19,7 +19,7 @@ jobs:
   test:
     runs-on: ubuntu-18.04
     steps:
-      - uses: technote-space/auto-cancel-redundant-workflow@v1
+      # - uses: technote-space/auto-cancel-redundant-workflow@v1
       - name: Hello world
         run: echo hello world
       - name: Be slow

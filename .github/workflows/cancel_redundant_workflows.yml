@@ -10,6 +10,9 @@ jobs:
   cancel-redundant-workflows:
     runs-on: ubuntu-18.04
     steps:
-      - uses: technote-space/auto-cancel-redundant-workflow@v1
-        env:
-          TARGET_RUN_ID: ${{ github.event.workflow_run.id }}
+      - uses: potiuk/cancel-workflow-runs@master
+        name: "Cancel duplicate workflow runs"
+        with:
+          cancelMode: duplicates
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sourceRunId: ${{ github.event.workflow_run.id }}
