@@ -23,7 +23,7 @@ jobs:
           git push origin "$BRANCH"
           curl "https://api.github.com/repos/samestep/gha-sandbox/pulls/$NUMBER" \
             -H "Authorization: token $TOKEN" \
-            -d "{ \"base\": \"$BRANCH\" }'
+            -d "{ \"base\": \"$BRANCH\" }"
         env:
           NUMBER: ${{ github.event.number }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
