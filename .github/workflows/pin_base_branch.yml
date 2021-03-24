@@ -1,8 +1,12 @@
 name: Pin base branch
-on: pull_request_target
+on:
+  pull_request_target:
+    branches:
+      - base/*
+      - main
 
 jobs:
-  pin-base-branch:
+  pin:
     runs-on: ubuntu-18.04
     steps:
       # should be safe according to
