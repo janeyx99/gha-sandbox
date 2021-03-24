@@ -33,5 +33,6 @@ jobs:
       - name: Add label
         uses: actions-ecosystem/action-add-labels@v1
         with:
+          github_token: ${{ secrets.PIN_TOKEN }}
           number: ${{ github.event.number }}
           labels: enhancement
