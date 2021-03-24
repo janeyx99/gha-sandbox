@@ -19,7 +19,7 @@ jobs:
           MERGE_BASE=$(git merge-base origin/main "$HEAD_SHA")
           BRANCH="base/$(git rev-parse --short=7 "$MERGE_BASE")"
           git checkout -B "$BRANCH" "$MERGE_BASE"
-          git push -f origin "$BRANCH"
+          git push origin "$BRANCH"
           curl "https://api.github.com/repos/samestep/gha-sandbox/pulls/$NUMBER" \
             -H "Authorization: token $TOKEN" \
             -d "{ \"base\": \"$BRANCH\" }"
