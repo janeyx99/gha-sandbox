@@ -1,8 +1,8 @@
 name: Cancel redundant workflows
 on:
   workflow_run:
-    workflows:
-      - Test  # TODO: delete this and see if it's optional
+    # workflows:
+      # - Test  # TODO: delete this and see if it's optional
     types:
       - requested
 
