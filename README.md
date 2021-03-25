@@ -1,3 +1,3 @@
 # GHA sandbox
 
-Experimenting with GitHub Actions
+Experimenting with GitHub Actions.
