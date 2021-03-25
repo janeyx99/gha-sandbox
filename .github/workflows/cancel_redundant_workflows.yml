@@ -8,7 +8,7 @@ on:
 
 jobs:
   cancel:
-    if: github.event.workflow_run.head_branch != 'master'
+    if: github.event.workflow_run.head_branch != 'main'
     runs-on: ubuntu-18.04
     steps:
       - name: Cancel duplicate workflow runs
